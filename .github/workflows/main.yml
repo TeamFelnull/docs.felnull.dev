@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Docs Data Update
+
+# Triggers the action as scheduled
+on:
+  push:
+  # Runs on 10 minutes past every hour（毎 n 時 10 分に実行）
+  schedule:
+    # Ref: 
+    #   - https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
+    #   - https://crontab.guru/examples.html
+    # Cron format:
+    #         ┌───────────── minute (0 - 59)
+    #         │ ┌───────────── hour (0 - 23)
+    #         │ │ ┌───────────── day of the month (1 - 31)
+    #         │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #         │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #         │ │ │ │ │                                   
+    #         │ │ │ │ │
+    #         │ │ │ │ │
+    #         * * * * *
+    - cron:  '0 4 * * *'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Curl & xmllint
+        run: |
+          apt install -y curl wget libxml2-utils
+      
+      - name: Git Setup
+        run: |
+          git config --global user.name ${NAME}
+          git config --global user.email ${EMAIL}
+          git config --global pull.rebase merges
+          git pull --unshallow
+        env:
+          NAME: MG8853
+          EMAIL: ${{ secrets.MG8853_MAIL }}
+      
+      - name: JavaDocs Update FELNULLJAVALIBRARY
+        run: |
+          Java_FELNULLJAVALIBRARY=`curl https://repo1.maven.org/maven2/dev/felnull/felnull-java-library/maven-metadata.xml | xmllint --xpath "/metadata/versioning/latest/text()" - `
+          
+          cd Java/FelNullJavaLibrary
+          wget https://repo1.maven.org/maven2/dev/felnull/felnull-java-library/$Java_FELNULLJAVALIBRARY/felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar  -O felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+          chmod 777 felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+          unzip -o felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+          
+      - name: JavaDocs Update KUSODOKATALIBRARY
+        run: |
+          Java_KUSODOKATALIBRARY=`curl https://repo1.maven.org/maven2/dev/felnull/kuso-dokata-library/maven-metadata.xml | xmllint --xpath "/metadata/versioning/latest/text()" - `
+
+          cd Java/KusoDokataLibrary
+          wget https://repo1.maven.org/maven2/dev/felnull/kuso-dokata-library/$Java_KUSODOKATALIBRARY/kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar -O kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+          chmod 777 felnull-java-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+          unzip -o felnull-java-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+          
+
+      - name: Push to Origin
+        run: |
+          git push
