@@ -1,0 +1,14 @@
+Java_FELNULLJAVALIBRARY=`curl https://repo1.maven.org/maven2/dev/felnull/felnull-java-library/maven-metadata.xml | xmllint --xpath "/metadata/versioning/latest/text()" - `
+Java_KUSODOKATALIBRARY=`curl https://repo1.maven.org/maven2/dev/felnull/kuso-dokata-library/maven-metadata.xml | xmllint --xpath "/metadata/versioning/latest/text()" - `
+
+cd Java/FelNullJavaLibrary
+wget https://repo1.maven.org/maven2/dev/felnull/felnull-java-library/$Java_FELNULLJAVALIBRARY/felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar -O felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+chmod 777 felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+unzip -o felnull-java-library-$Java_FELNULLJAVALIBRARY-javadoc.jar
+
+cd Java/KusoDokataLibrary
+wget https://repo1.maven.org/maven2/dev/felnull/kuso-dokata-library/$Java_KUSODOKATALIBRARY/kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar -O kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+chmod 777 kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+unzip -o kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+
+
