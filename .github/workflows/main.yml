@@ -52,8 +52,8 @@ jobs:
 
           cd Java/KusoDokataLibrary
           wget https://repo1.maven.org/maven2/dev/felnull/kuso-dokata-library/$Java_KUSODOKATALIBRARY/kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar -O kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
-          chmod 777 felnull-java-library-$Java_KUSODOKATALIBRARY-javadoc.jar
-          unzip -o felnull-java-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+          chmod 777 kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
+          unzip -o kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
           
 
       - name: Push to Origin
