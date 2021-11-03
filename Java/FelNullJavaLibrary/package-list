@@ -1,4 +1,6 @@
 dev.felnull.fnjl
-dev.felnull.fnjl.data
 dev.felnull.fnjl.io
+dev.felnull.fnjl.jni
+dev.felnull.fnjl.jni.windows
+dev.felnull.fnjl.os
 dev.felnull.fnjl.util
