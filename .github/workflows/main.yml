@@ -58,4 +58,5 @@ jobs:
 
       - name: Push to Origin
         run: |
+          git commit --all --message=DocsUpdate --verbose
           git push
