@@ -55,9 +55,9 @@ jobs:
           chmod 777 kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
           unzip -o kuso-dokata-library-$Java_KUSODOKATALIBRARY-javadoc.jar
           
-
+# git ls-files --others --exclude-standard | xargs git add || echo "No changes to commit"
       - name: Push to Origin
         run: |
-          git ls-files --others --exclude-standard | xargs git add || echo "No changes to commit"
-          git commit --all --message=DocsUpdate --verbose
-          git push
+          git add . || echo "No changes to commit"
+          git commit --all --message=DocsUpdate --verbose || echo "No changes to commit"
+          git push || echo "No changes to commit"
