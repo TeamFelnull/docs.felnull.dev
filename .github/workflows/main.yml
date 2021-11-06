@@ -58,6 +58,6 @@ jobs:
 
       - name: Push to Origin
         run: |
-          git ls-files --others --exclude-standard | xargs git add
+          git ls-files --others --exclude-standard | xargs git add || echo "No changes to commit"
           git commit --all --message=DocsUpdate --verbose
           git push
