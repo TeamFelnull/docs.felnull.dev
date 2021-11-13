@@ -24,7 +24,7 @@ on:
 
 jobs:
   docs-data-update:
-    runs-on: self-hosted
+    runs-on: CyberPanel-1
     steps:
       - uses: actions/checkout@v2
       - name: Git Setup
