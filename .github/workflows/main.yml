@@ -24,8 +24,7 @@ on:
 
 jobs:
   docs-data-update:
-    # runs-on: MGServer-1
-    runs-on: self-hosted
+    runs-on: MGServer-1
     steps:
       - uses: actions/checkout@v2
       - name: Git Setup
