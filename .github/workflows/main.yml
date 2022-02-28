@@ -6,21 +6,21 @@ name: Docs Data Update
 on:
   push:
   # Runs on 10 minutes past every hour（毎 n 時 10 分に実行）
-  schedule:
-    # Ref: 
-    #   - https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
-    #   - https://crontab.guru/examples.html
-    # Cron format:
-    #         ┌───────────── minute (0 - 59)
-    #         │ ┌───────────── hour (0 - 23)
-    #         │ │ ┌───────────── day of the month (1 - 31)
-    #         │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
-    #         │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-    #         │ │ │ │ │                                   
-    #         │ │ │ │ │
-    #         │ │ │ │ │
-    #         * * * * *
-    - cron:  '0 4 * * *'
+#   schedule:
+#     # Ref: 
+#     #   - https://help.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events-schedule
+#     #   - https://crontab.guru/examples.html
+#     # Cron format:
+#     #         ┌───────────── minute (0 - 59)
+#     #         │ ┌───────────── hour (0 - 23)
+#     #         │ │ ┌───────────── day of the month (1 - 31)
+#     #         │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+#     #         │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+#     #         │ │ │ │ │                                   
+#     #         │ │ │ │ │
+#     #         │ │ │ │ │
+#     #         * * * * *
+#     - cron:  '0 4 * * *'
 
 jobs:
   docs-data-update:
